@@ -1,0 +1,40 @@
+# Análise de Dados Médicos
+
+Este código realiza uma análise de dados médicos utilizando um conjunto de dados carregado de um arquivo CSV chamado `medical_examination.csv`. A análise inclui a criação de variáveis derivadas, normalização de dados e visualizações gráficas.
+
+## Objetivos do Código
+
+1. **Carregamento dos Dados**:
+   - Os dados são carregados a partir de um arquivo CSV.
+
+2. **Cálculo do Sobrepeso**:
+   - Uma nova coluna chamada `sobrepeso` é adicionada ao DataFrame, indicando se o Índice de Massa Corporal (IMC) é superior a 25.
+
+3. **Normalização de Dados**:
+   - As colunas `cholesterol` e `gluc` são normalizadas de modo que:
+     - Valor 1 se torna 0 (bom).
+     - Valores 2 e 3 se tornam 1 (ruim).
+
+4. **Visualização Gráfica**:
+   - **Gráfico Categórico**: A função `desenhar_grafico_categorico()` cria um gráfico categórico para visualizar a relação entre características (como colesterol, glicose, status de fumante, consumo de álcool, atividade física e sobrepeso) e a presença de doenças cardiovasculares (`cardio`).
+   - **Mapa de Calor**: A função `desenhar_mapa_calor()` gera um mapa de calor para visualizar a matriz de correlação entre variáveis numéricas, após a limpeza dos dados para remover outliers.
+
+## Estrutura do Código
+
+- **Bibliotecas Utilizadas**:
+  - `pandas` para manipulação de dados.
+  - `seaborn` e `matplotlib` para visualização gráfica.
+  - `numpy` para operações numéricas.
+
+- **Funções**:
+  - `desenhar_grafico_categorico()`: Gera um gráfico categórico para analisar a distribuição de variáveis.
+  - `desenhar_mapa_calor()`: Cria um mapa de calor da matriz de correlação entre variáveis.
+
+## Saídas
+
+- O gráfico categórico é salvo como `catplot.png`.
+- O mapa de calor é salvo como `heatmap.png`.
+
+## Observações
+
+- Certifique-se de que o arquivo `medical_examination.csv` esteja disponível no mesmo diretório do código.

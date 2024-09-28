@@ -1,0 +1,32 @@
+# Matrix Calculation - 3x3 Statistics
+
+A função `calculate()` realiza cálculos estatísticos em uma matriz 3x3 criada a partir de uma lista de exatamente 9 elementos. Ela retorna um dicionário com várias estatísticas.
+
+## Objetivos
+
+1. **Validação da Entrada**: Verifica se a lista contém 9 elementos.
+2. **Transformação**: Converte a lista em uma matriz 3x3 usando `numpy`.
+3. **Cálculos**:
+   - **Média**: Média por coluna, por linha e geral.
+   - **Variância**: Variância por coluna, por linha e geral.
+   - **Desvio Padrão**: Desvio padrão por coluna, por linha e geral.
+   - **Máximo e Mínimo**: Valores máximos e mínimos por coluna, por linha e geral.
+   - **Soma**: Soma por coluna, por linha e total.
+
+## Estrutura de Retorno
+
+O dicionário retornado contém:
+- `media`
+- `variancia`
+- `desvio_padrao`
+- `maximo`
+- `minimo`
+- `soma`
+
+Cada chave possui uma lista com três valores: por coluna, por linha e geral.
+
+## Exemplo de Uso
+
+```python
+resultado = calculate([1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(resultado)

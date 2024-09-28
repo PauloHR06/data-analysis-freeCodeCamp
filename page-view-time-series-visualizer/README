@@ -1,0 +1,39 @@
+# Análise de Visualizações do Fórum FreeCodeCamp
+
+Este código realiza uma análise das visualizações diárias do fórum FreeCodeCamp usando um conjunto de dados carregado de um arquivo CSV chamado `fcc-forum-pageviews.csv`. A análise inclui a filtragem de dados, remoção de outliers e a criação de diferentes visualizações gráficas.
+
+## Objetivos do Código
+
+1. **Carregamento e Preparação dos Dados**:
+   - Os dados são carregados a partir de um arquivo CSV, e a coluna `date` é definida como índice, com as datas analisadas em formato de data.
+
+2. **Filtragem de Dados**:
+   - Outliers são removidos com base nos quantis de 2,5% e 97,5% dos dados de visualizações.
+
+3. **Visualizações Gráficas**:
+   - **Gráfico de Linhas**: A função `create_line_plot()` gera um gráfico de linhas mostrando as visualizações diárias do fórum de maio de 2016 a dezembro de 2019.
+   - **Gráfico de Barras**: A função `create_bar_plot()` cria um gráfico de barras mostrando a média de visualizações por ano e mês, facilitando a comparação sazonal.
+   - **Box Plots**: A função `create_box_plot()` gera box plots para analisar a distribuição das visualizações, tanto por ano (tendência) quanto por mês (sazonalidade).
+
+## Estrutura do Código
+
+- **Bibliotecas Utilizadas**:
+  - `pandas` para manipulação de dados.
+  - `matplotlib` e `seaborn` para visualização gráfica.
+  - `numpy` para operações numéricas.
+
+- **Funções**:
+  - `create_line_plot()`: Cria um gráfico de linha das visualizações diárias.
+  - `create_bar_plot()`: Gera um gráfico de barras com a média de visualizações por mês e ano.
+  - `create_box_plot()`: Produz box plots para analisar as visualizações ao longo do tempo.
+
+## Saídas
+
+- Os gráficos gerados são salvos como:
+  - `line_plot_restructured.png`: Gráfico de linhas.
+  - `bar_plot_restructured.png`: Gráfico de barras.
+  - `box_plot_restructured.png`: Box plots.
+
+## Observações
+
+- Certifique-se de que o arquivo `fcc-forum-pageviews.csv` esteja disponível no mesmo diretório do código.

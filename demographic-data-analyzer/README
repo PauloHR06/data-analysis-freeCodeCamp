@@ -1,0 +1,23 @@
+# Analyze Demographic Data
+
+Este código tem como objetivo realizar uma análise detalhada de dados demográficos a partir do arquivo CSV `adult.data.csv`. Ele busca gerar insights sobre diferentes características da população e identificar correlações importantes entre fatores como raça, educação, renda e horas de trabalho.
+
+## Objetivos principais
+
+1. **Distribuição racial**: Identificar a distribuição de raças presentes no conjunto de dados.
+2. **Idade média dos homens**: Calcular a idade média da população masculina.
+3. **Análise de educação**:
+   - Verificar a porcentagem de pessoas com 13 anos ou mais de educação formal.
+   - Calcular a porcentagem de pessoas que possuem diploma de bacharelado.
+4. **Relação entre educação e renda**:
+   - Determinar a porcentagem de pessoas com educação avançada (13 anos ou mais) que ganham mais de $50K por ano.
+   - Comparar essa taxa com a porcentagem de pessoas sem educação avançada que também ganham mais de $50K.
+5. **Horas de trabalho semanais**:
+   - Identificar o número mínimo de horas trabalhadas por semana.
+   - Calcular a porcentagem de pessoas que trabalham o mínimo de horas e ainda assim ganham mais de $50K.
+6. **Análise por país**:
+   - Descobrir o país com a maior porcentagem de pessoas que ganham mais de $50K.
+7. **Ocupação na Índia**: Identificar a ocupação mais comum entre aqueles que ganham mais de $50K na Índia.
+8. **Estado civil e educação**: Determinar a porcentagem de pessoas casadas que possuem 13 anos ou mais de escolaridade.
+
+Com esses objetivos, o código procura oferecer uma visão mais ampla das características socioeconômicas da população e como fatores como educação e local de origem influenciam na renda.

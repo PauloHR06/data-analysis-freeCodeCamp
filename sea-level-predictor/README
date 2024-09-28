@@ -1,0 +1,35 @@
+# Análise do Aumento do Nível do Mar
+
+Este código realiza uma análise do aumento do nível do mar ao longo dos anos, utilizando dados disponíveis no arquivo CSV `epa-sea-level.csv`. A análise inclui a geração de um gráfico de dispersão com linhas de ajuste linear, representando a tendência de aumento do nível do mar.
+
+## Objetivos do Código
+
+1. **Carregamento e Preparação dos Dados**:
+   - Os dados são carregados de um arquivo CSV que contém informações sobre o nível do mar ajustado pelo CSIRO ao longo dos anos.
+
+2. **Visualização Gráfica**:
+   - **Gráfico de Dispersão**: O gráfico exibe os níveis do mar medidos ao longo dos anos, com um ponto representando cada medição.
+   - **Linhas de Ajuste**:
+     - **Linha de Ajuste (1880-2050)**: A primeira linha de ajuste é calculada com base nos dados desde 1880 até 2050.
+     - **Linha de Ajuste (2000-2050)**: A segunda linha de ajuste é calculada apenas para os dados a partir do ano 2000 até 2050.
+
+## Estrutura do Código
+
+- **Bibliotecas Utilizadas**:
+  - `pandas` para manipulação de dados.
+  - `matplotlib` para visualização gráfica.
+  - `scipy.stats` para cálculos de regressão linear.
+  - `numpy` para operações numéricas.
+
+- **Função**:
+  - `generate_sea_level_plot()`: Carrega os dados, gera um gráfico de dispersão dos níveis do mar e calcula duas linhas de ajuste linear para visualizar a tendência de aumento do nível do mar.
+
+## Saídas
+
+- O gráfico gerado é salvo como `sea_level_plot.png` e inclui:
+  - Eixos rotulados para anos e níveis do mar (em polegadas).
+  - Títulos e legendas para identificar as linhas de ajuste.
+
+## Observações
+
+- Certifique-se de que o arquivo `epa-sea-level.csv` esteja disponível no mesmo diretório do código.

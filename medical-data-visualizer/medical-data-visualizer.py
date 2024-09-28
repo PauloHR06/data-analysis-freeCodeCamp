@@ -3,55 +3,55 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Import data
-df = pd.read_csv("medical_examination.csv")
+# Carregar os dados
+dados = pd.read_csv("medical_examination.csv")
 
-# Add 'overweight' column
-BMI = df['weight']/((df['height']/100)**2)
-df['overweight'] = (BMI > 25).astype(int)
+# Adicionar a coluna 'sobrepeso'
+IMC = dados['weight'] / ((dados['height'] / 100) ** 2)
+dados['sobrepeso'] = (IMC > 25).astype(int)
 
-# Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
-df['cholesterol'] = df['cholesterol'].replace([1, 2, 3], [0, 1, 1])
-df['gluc'] = df['gluc'].replace([1, 2, 3], [0, 1, 1])
+# Normalizar os dados, fazendo com que 0 seja sempre bom e 1 sempre ruim. Se o valor de 'colesterol' ou 'glicose' for 1, o valor se torna 0. Se for maior que 1, o valor se torna 1.
+dados['colesterol'] = dados['cholesterol'].replace([1, 2, 3], [0, 1, 1])
+dados['glicose'] = dados['gluc'].replace([1, 2, 3], [0, 1, 1])
 
-# Draw Categorical Plot
-def draw_cat_plot():
-    # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
-    df_cat = pd.melt(df, id_vars = ['cardio'], value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
+# Função para desenhar gráfico categórico
+def desenhar_grafico_categorico():
+    # Criar DataFrame para o gráfico categórico usando `pd.melt` com apenas os valores de 'colesterol', 'glicose', 'fumante', 'alco', 'ativo' e 'sobrepeso'.
+    df_categoria = pd.melt(dados, id_vars=['cardio'], value_vars=['colesterol', 'glicose', 'smoke', 'alco', 'active', 'sobrepeso'])
 
-    # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
-    df_cat = pd.DataFrame(df_cat.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total'))
+    # Agrupar e reformatar os dados para separá-los por 'cardio'. Mostrar as contagens de cada característica. Você precisará renomear uma das colunas para que o gráfico funcione corretamente.
+    df_categoria = pd.DataFrame(df_categoria.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total'))
 
-    # Draw the catplot with 'sns.catplot()'
-    fig = sns.catplot(x='variable', y='total', hue='value', col='cardio', data=df_cat, kind='bar').fig
+    # Desenhar o gráfico categórico com 'sns.catplot()'
+    fig = sns.catplot(x='variable', y='total', hue='value', col='cardio', data=df_categoria, kind='bar').fig
 
-    # Do not modify the next two lines
+    # Não modifique as duas próximas linhas
     fig.savefig('catplot.png')
     return fig
 
 
-# Draw Heat Map
-def draw_heat_map():
-  # Clean the data
-  df_heat = df[(df['ap_lo'] <= df['ap_hi'])
-    & (df['height'] >= df['height'].quantile(0.025))
-    & (df['height'] <= df['height'].quantile(0.975))
-    & (df['weight'] >= df['weight'].quantile(0.025))
-    & (df['weight'] <= df['weight'].quantile(0.975))]
+# Função para desenhar o mapa de calor
+def desenhar_mapa_calor():
+    # Limpar os dados
+    df_mapa = dados[(dados['ap_lo'] <= dados['ap_hi'])
+                    & (dados['height'] >= dados['height'].quantile(0.025))
+                    & (dados['height'] <= dados['height'].quantile(0.975))
+                    & (dados['weight'] >= dados['weight'].quantile(0.025))
+                    & (dados['weight'] <= dados['weight'].quantile(0.975))]
 
-  # Calculate the correlation matrix
-  corr = df_heat.corr()
+    # Calcular a matriz de correlação
+    correlacao = df_mapa.corr()
 
-  # Generate a mask for the upper triangle
-  mask = np.zeros_like(corr)
-  mask[np.triu_indices_from(mask)] = True
+    # Gerar uma máscara para o triângulo superior
+    mascara = np.zeros_like(correlacao)
+    mascara[np.triu_indices_from(mascara)] = True
 
-  # Set up the matplotlib figure
-  fig, ax = plt.subplots(figsize=(12, 12))
+    # Configurar a figura do matplotlib
+    fig, ax = plt.subplots(figsize=(12, 12))
 
-    # Draw the heatmap with 'sns.heatmap()'
-  ax = sns.heatmap(corr, linewidths=.5, annot=True, fmt='.1f', mask=mask, square=True, center=0, vmin=-0.1, vmax=0.25, cbar_kws={'shrink': .45,'format': '%.2f'})
+    # Desenhar o mapa de calor com 'sns.heatmap()'
+    ax = sns.heatmap(correlacao, linewidths=.5, annot=True, fmt='.1f', mask=mascara, square=True, center=0, vmin=-0.1, vmax=0.25, cbar_kws={'shrink': .45, 'format': '%.2f'})
 
-  # Do not modify the next two lines
-  fig.savefig('heatmap.png')
-  return fig
+    # Não modifique as duas próximas linhas
+    fig.savefig('heatmap.png')
+    return fig
